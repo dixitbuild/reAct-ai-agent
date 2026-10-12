@@ -1,4 +1,5 @@
 import os
+from unittest import result
 from dotenv import load_dotenv
 from dynamiq.nodes.llms.apenai import OpenAI
 from dynamiq.connections import OpenAI as OpenAIConnection, E2B as E2BConnection
@@ -28,3 +29,7 @@ agent = ReActAgent(
     description="An agent that can write and run code to answer questions about data science and machine learning. It can use the E2B tool to run code and get results.",
     max_loops=10
 )
+
+#run the agent with a prompt
+result = agent.run("Write a python function to calculate the factorial of a number and run it for the number 5.")
+print(result.output.get("content"))

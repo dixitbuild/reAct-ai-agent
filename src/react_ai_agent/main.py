@@ -18,3 +18,13 @@ llm = OpenAI(
     model="gpt-4o",
     temperature=0.2,
     max_tokens=1000)
+
+#create agent with the llm and tools
+agent = ReActAgent(
+    name="react-agent",
+    llm=llm,
+    tools=[run_code_tool],
+    role="Senior Data Scientist",
+    description="An agent that can write and run code to answer questions about data science and machine learning. It can use the E2B tool to run code and get results.",
+    max_loops=10
+)
